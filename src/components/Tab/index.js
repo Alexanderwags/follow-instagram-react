@@ -20,7 +20,7 @@ export default function DisabledTabs({ getValue }) {
         onChange={handleChange}
         aria-label="disabled tabs example"
       >
-        <Tab label="Follow" />
+        <Tab label="Followers" />
         <Tab label="Following" />
       </Tabs>
     </Paper>

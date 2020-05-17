@@ -7,7 +7,6 @@ import InfoContext from "../../context/InfoContext";
 function ItemFollow({ data }) {
   const context = useContext(InfoContext);
   const [state, setstate] = useState(data.follow);
-  const [visible, setvisible] = useState(data.visible);
   //console.log(context);
   function handleclick() {
     let ind = data.id - 1;
@@ -15,23 +14,39 @@ function ItemFollow({ data }) {
       setstate("false");
       context[ind].follow = "false";
       context[ind].visible = "true";
-    } else if (state === "false") {
-      setstate("true");
-      context[ind].follow = "true";
+    } else if (state === "wait") {
+      setstate("false");
+      context[ind].follow = "false";
+      context[ind].visible = "true";
+    }
+  }
+  function handleFollow() {
+    let ind = data.id - 1;
+    if (state === "true") {
+      setstate("wait");
+      context[ind].following = "true";
       context[ind].visible = "false";
     }
-
-    // console.log(context[ind].follow);
-    // console.log("state ", state);
-    // console.log("follow ", data.follow);
   }
+
   function show() {
-    if (state === "false" && visible === "true") {
+    if (state === "true") {
       return (
         <div className={Styles.container}>
           <Avatar alt="Cindy Baker" src="" />
           <div className={Styles.name}>
             <p>{data.name}</p>
+            {data.following === "false" ? (
+              <Button
+                variant="text"
+                className={Styles.btnblue}
+                onClick={handleFollow}
+              >
+                Follow
+              </Button>
+            ) : (
+              <></>
+            )}
           </div>
 
           <Button
@@ -43,24 +58,58 @@ function ItemFollow({ data }) {
           </Button>
         </div>
       );
-    } else if (state === "true" && visible === "true") {
+    } else if (state === "wait") {
       return (
         <div className={Styles.container}>
           <Avatar alt="Cindy Baker" src="" />
           <div className={Styles.name}>
             <p>{data.name}</p>
           </div>
-
           <Button
             variant="text"
-            className={Styles.btnblue}
+            className={Styles.btnred}
             onClick={handleclick}
           >
-            Follow
+            remove
           </Button>
         </div>
       );
     }
+    // if (state === "false" && visible === "true") {
+    //   return (
+    //     <div className={Styles.container}>
+    //       <Avatar alt="Cindy Baker" src="" />
+    //       <div className={Styles.name}>
+    //         <p>{data.name}</p>
+    //       </div>
+
+    //       <Button
+    //         variant="text"
+    //         className={Styles.btnred}
+    //         onClick={handleclick}
+    //       >
+    //         remove
+    //       </Button>
+    //     </div>
+    //   );
+    // } else if (state === "true" && visible === "true") {
+    //   return (
+    //     <div className={Styles.container}>
+    //       <Avatar alt="Cindy Baker" src="" />
+    //       <div className={Styles.name}>
+    //         <p>{data.name}</p>
+    //       </div>
+
+    //       <Button
+    //         variant="text"
+    //         className={Styles.btnblue}
+    //         onClick={handleclick}
+    //       >
+    //         Follow
+    //       </Button>
+    //     </div>
+    //   );
+    // }
   }
   return <>{show()}</>;
 }

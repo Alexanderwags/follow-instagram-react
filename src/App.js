@@ -6,7 +6,7 @@ import "./Global/Styles.scss";
 const users = [
   {
     id: 1,
-    follow: "false",
+    follow: "true",
     following: "true",
     visible: "true",
     name: "Leanne Graham",
@@ -111,8 +111,8 @@ const users = [
   {
     id: 5,
     name: "Chelsey Dietrich",
-    follow: "false",
-    following: "true",
+    follow: "true",
+    following: "false",
     visible: "true",
     username: "Kamren",
     email: "Lucio_Hettinger@annie.ca",
@@ -188,8 +188,8 @@ const users = [
   },
   {
     id: 8,
-    name: "Nicholas Runolfsdottir V",
-    follow: "false",
+    name: "Nicholas",
+    follow: "true",
     following: "true",
     visible: "true",
     username: "Maxime_Nienow",
@@ -215,7 +215,7 @@ const users = [
   {
     id: 9,
     name: "Glenna Reichert",
-    follow: "false",
+    follow: "true",
     following: "true",
     visible: "true",
     username: "Delphine",
@@ -241,8 +241,8 @@ const users = [
   {
     id: 10,
     name: "Clementina DuBuque",
-    follow: "false",
-    following: "true",
+    follow: "true",
+    following: "false",
     visible: "true",
     username: "Moriah.Stanton",
     email: "Rey.Padberg@karina.biz",
