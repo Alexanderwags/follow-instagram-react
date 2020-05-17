@@ -6,26 +6,26 @@ import InfoContext from "../../context/InfoContext";
 
 function ItemFollowing({ data }) {
   const context = useContext(InfoContext);
-  const [state, setstate] = useState(data.follow);
+  const [state, setstate] = useState(data.following);
   const [visible, setvisible] = useState(data.visible);
   function handleclick() {
     let ind = data.id - 1;
     if (state === "true") {
       setstate("false");
-      context[ind].follow = "false";
-      context[ind].visible = "true";
+      context[ind].following = "false";
+      context[ind].visible = "false";
     } else if (state === "false") {
       setstate("true");
-      context[ind].follow = "true";
-      context[ind].visible = "false";
+      context[ind].following = "true";
+      context[ind].visible = "true";
     }
 
-    // console.log(context[ind].follow);
-    // console.log("state ", state);
-    // console.log("follow ", data.follow);
+    console.log(context[ind].following);
+    console.log("state ", state);
+    console.log("follow ", data.following);
   }
   function show() {
-    if (data.following === "true" && visible === "true") {
+    if (state === "true" && visible === "true") {
       return (
         <div className={Styles.container}>
           <Avatar alt="Cindy Baker" src="" />
@@ -33,12 +33,16 @@ function ItemFollowing({ data }) {
             <p>{data.name}</p>
           </div>
 
-          <Button variant="text" className={Styles.btnred}>
+          <Button
+            variant="text"
+            className={Styles.btnred}
+            onClick={handleclick}
+          >
             Following
           </Button>
         </div>
       );
-    } else if (data.following === "false" && visible === "true") {
+    } else if (state === "false" && visible === "true") {
       return (
         <div className={Styles.container}>
           <Avatar alt="Cindy Baker" src="" />
@@ -46,7 +50,11 @@ function ItemFollowing({ data }) {
             <p>{data.name}</p>
           </div>
 
-          <Button variant="text" className={Styles.btnblue}>
+          <Button
+            variant="text"
+            className={Styles.btnblue}
+            onClick={handleclick}
+          >
             Follow
           </Button>
         </div>
