@@ -1,0 +1,43 @@
+:local {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .name {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 250px;
+      button {
+        margin-left: 10px;
+      }
+    }
+    .btnred {
+      text-decoration: none;
+      padding: 10px;
+      background-color: brown;
+      color: white;
+      transition: 0.3s;
+      border-radius: 100px;
+    }
+    .btnred:hover {
+      background-color: white;
+      color: brown;
+      border: 1px solid brown;
+    }
+    .btnblue {
+      text-decoration: none;
+      padding: 5px;
+      background-color: lightseagreen;
+      color: white;
+      transition: 0.3s;
+      border-radius: 80px;
+    }
+    .btnblue:hover {
+      background-color: white;
+      color: lightseagreen;
+      border: 1px solid lightseagreen;
+    }
+  }
+}
